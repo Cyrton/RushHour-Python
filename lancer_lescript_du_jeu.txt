@@ -1,0 +1,2 @@
+1) aller dans le dossier où se trouve le fichier cible que l'on veut lancer
+2)lancer la commande suivante: py Code_Unblock_the_Block.py

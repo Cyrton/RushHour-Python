@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun May 07 11:11:12 2017
+
+@author: marti
+"""
+from tkinter import *
+from PIL import Image
+from fenetre_profil import *
+import json
+
+
+#Def qui permet de dire si un pseudo est deja enregisté
+
+def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
+    if pseudo == "":
+        print("Vous n'avez pas rentrer de pseudo")
+    else:
+        try:
+            with open('sauvegarde.json') as json_data_r:
+                data_dict = json.load(json_data_r)
+            if pseudo in data_dict.keys():
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+                    
+            else:
+                data_dict[pseudo] = {"historique":[],"score":{}}
+                with open('sauvegarde.json','w') as json_data_w:
+                    json.dump(data_dict,json_data_w)
+                    print("Joueur ajouter")
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+        except:
+            print("Le fichier Json est vide")    
+   
+
+#Fonction de la fenêtre Jouer
+def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general):
+    print("Fenetre_Jouer")
+    
+    canvas_general.destroy()
+    canvas_jouer = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
+    canvas_jouer.pack(side=TOP, fill=BOTH, expand=YES)
+    
+    #Mise en page (Fenêtre, Titre, Texte, Entrée Texte, Boutons)
+    fenetre_P['bg']='sky blue'
+    fenetre_P.geometry("900x800")
+    fenetre_P.title('UNBLOCK THE BLOCK')
+    
+    label1 = Label(canvas_jouer, text="Règle du jeu",bg = 'sky blue',font="Arial 16 underline ")
+    label2 = Label(canvas_jouer, text="    Le but du jeu est simple :\n\
+    \n    Il faut faire sortir le Rectangle Rouge du PUZZLE dans le temps imparti.\
+    \n    Vous commencerez avec un total de '2000 points' que vous perdrez au fil du temps ET des niveaux.\
+    \n    Votre but sera donc de terminer chaque niveau le plus vite possible afin d'avoir un maximum de points a la fin !\n\n\
+    \n    Sachant que :\n\
+    \n    - Pour le 'NIVEAU 1' vous perdrez 5 points toutes les secondes;\
+    \n               - Pour le 'NIVEAU 2' vous perdrez 15 points toutes les deux secondes;\
+    \n          - Pour le 'NIVEAU 3' vous perdrez 30 points toutes les trois secondes.",bg = 'sky blue',font="Arial 12")
+    label3 = Label(canvas_jouer, text=" Entrez votre nom :",bg = 'sky blue',font="Arial 8 bold")
+    
+    label1.pack(padx=0,pady=35)
+    label2.pack(padx=0,pady=30)
+    label3.pack(padx=0,pady=10)
+    
+    pseudo = StringVar() 
+    pseudo.set("")
+    
+    entree = Entry(canvas_jouer, textvariable=pseudo, width=20,bg='white')
+    entree.pack(padx=0,pady=5)
+    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get()),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO.pack(padx=0,pady=15)
+    
+    label4 = Label(canvas_jouer,text="     Le jeu a été réalisé par :\n\
+    \n    MINCIUNESCU Aurélien\
+    \n    MINKA Léonard\
+    \n    PERDAENS Martin\
+    \n  PIRET Nathan",bg ='#A0E3F7',font="Arial 10")
+    label4.pack(padx=0,pady=15)
+    
+    
+    bRetour = Button(canvas_jouer, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,canvas_jouer,NONE),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
+    bRetour.pack(padx=0,pady=15)
+    fenetre_P.mainloop()
+
+#Fenetre_Principale(fenetre_P,canvas_jouer,NONE)
