@@ -8,9 +8,10 @@ from tkinter import *
 from PIL import Image
 from pickle import dump, load
 from niveau_base import *
+from vehicule import *
 
 #La meme chose que pour le niveau 1                   
-class ApplicationNv3(ApplicationBase):
+class ApplicationNv3(ApplicationBase,vehicule):
     def __init__(self,unite, x, y,score,fenetre_P,canvas_profil):
         self.canvas_profil = canvas_profil
         self.canvas_profil.destroy()
@@ -30,33 +31,9 @@ class ApplicationNv3(ApplicationBase):
 
         print ("Niveau 3")            
         self.niveau = 3
-        self.Niveau3(10, 300,  125)
+        self.Niveau(10, 300,  125)
         self.root.mainloop()
-                        
-    def Niveau3(self, unite, x, y):
-        self.v1 = self.canvas.create_rectangle(x+(10*unite),y+(5*unite),x+(14.6*unite),y+(14.6*unite), fill="pale green2")
-        self.v2 = self.canvas.create_rectangle(x+(15*unite),y+(5*unite),x+(24.6*unite),y+(9.6*unite), fill="orange")
-        self.v3 = self.canvas.create_rectangle(x+(10*unite),y+(15*unite),x+(14.6*unite),y+(24.6*unite), fill="sky blue")
-        self.v4 = self.canvas.create_rectangle(x+(20*unite),y+(15*unite),x+(29.6*unite),y+(19.6*unite), fill="violet")
-        self.v5 = self.canvas.create_rectangle(x+(20*unite),y+(20*unite),x+(29.6*unite),y+(24.6*unite), fill="dark green")
-        self.v6 = self.canvas.create_rectangle(x+(15*unite),y+(15*unite),x+(19.6*unite),y+(24.6*unite), fill= "pink")
-        self.c1 = self.canvas.create_rectangle(x+(25*unite),y+(0*unite),x+(29.6*unite),y+(14.6*unite), fill="pale violet red3")
-        self.c2 = self.canvas.create_rectangle(x+(10*unite),y+(25*unite),x+(24.6*unite),y+(29.6*unite), fill="royal blue4")
-        self.c3 = self.canvas.create_rectangle(x+(10*unite),y+(0*unite),x+(24.6*unite),y+(4.6*unite), fill="Yellow2")
-        self.carreRouge = self.canvas.create_rectangle(x+(15*unite),y+(10*unite),x+(24.6*unite),y+(14.6*unite), fill="red")
-            
-        self.ext1 = self.canvas.create_rectangle(x+(-0.3*unite),y+(-100.4*unite),x+(29.9*unite),y+(-0.01*unite), outline="")
-        self.ext2 = self.canvas.create_rectangle(x+(-100.4*unite),y+(-0.3*unite),x+(-0.01*unite),y+(29.9*unite), outline="")
-        self.ext3 = self.canvas.create_rectangle(x+(-0.3*unite),y+(29.61*unite),x+(29.9*unite),y+(130*unite), outline="")
-        self.ext4 = self.canvas.create_rectangle(x+(29.61*unite),y+(14.7*unite),x+(130*unite),y+(29.9*unite), outline="")
-        self.ext5 = self.canvas.create_rectangle(x+(29.61*unite),y+(-0.3*unite),x+(130*unite),y+(9.9*unite), outline="")
-            
-        self.rectH = [self.v2,self.c2,self.carreRouge,self.c3,self.v4,self.v5]
-        self.rectV = [self.v1,self.c1,self.v3,self.v6]
-        self.bloq =  [self.ext1,self.ext2,self.ext3,self.ext4,self.ext5]
-        self.rectAll = self.rectH + self.rectV +self.bloq
-            
-           
+                               
     def niveausuivant(self,score):
         boutton2 = Button(self.root,text="Sauvergarde",bg="#86DED2",width =25,height=1 )
         boutton2.place(anchor=CENTER, x=450,y=635)
