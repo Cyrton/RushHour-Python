@@ -1,1 +1,4 @@
-{"martin": {"historique": [1,2,3], "score": {}}, "cyril": {"historique": [], "score": {"niveau1": {"score1": 2000}, "niveau2": {"score1": 2000}, "niveau3": {"score1": 2000}}}, "toto": {"historique": [1, 2], "score": {}}, "tata": {"historique": [], "score": {}}}
+{"martin": {"historique": [1,2,3], "score": {}}, 
+    "cyril": {"historique": [], "score": {"niveau1": {"score1": 2000}, "niveau2": {"score1": 2000}, "niveau3": {"score1": 2000}}}, 
+    "toto": {"historique": [1, 2], "score": {}}, 
+    "tata": {"historique": [], "score": {}}}

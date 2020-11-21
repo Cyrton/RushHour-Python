@@ -24,6 +24,16 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     label = Label(canvas_classement, text="Classement",bg = 'sky blue',font="Arial 16 underline ")
     label.pack(padx=0,pady=50)
 
+    labelNiveau1 = Label(canvas_classement, text="Niveau 1", bg='sky blue', font = "Arial 13 underline")
+    labelNiveau2 = Label(canvas_classement, text="Niveau 2", bg='sky blue', font = "Arial 13 underline")
+    labelNiveau3 = Label(canvas_classement, text="Niveau 3", bg='sky blue', font = "Arial 13 underline")
+    
+    labelNiveau1.place(anchor=CENTER, x=150, y=150)
+    labelNiveau2.place(anchor=CENTER, x=450, y=150)
+    labelNiveau3.place(anchor=CENTER, x=750, y=150)
+
+
+
     """
     #Tentative de recupération de liste du fichier sauvegardes.txt
     try:
