@@ -16,9 +16,10 @@ import time
 
 #Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
 class ApplicationNv1(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo):
         self.fenetre_P = fenetre_P
         self.canvas_profil = canvas_profil
+        self.pseudo = pseudo
         self.canvas_profil.destroy()
         self.root= self.fenetre_P
         self.root.geometry("900x800")
@@ -53,5 +54,5 @@ class ApplicationNv1(ApplicationBase,vehicule):
     #Def de lancement du niveau 2
     def nextNiveau(self):
         self.canvas.destroy()
-        ApplicationNv2(10, 300,  125,score,self.fenetre_P,self.canvas_profil)   
+        ApplicationNv2(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo)   
     

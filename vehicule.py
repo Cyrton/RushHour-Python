@@ -8,6 +8,7 @@ from tkinter import *
 from PIL import Image
 from pickle import dump, load
 from random import *
+import json
 
 
 class vehicule:
@@ -24,6 +25,7 @@ class vehicule:
         self.ext4 = self.canvas.create_rectangle(x+(29.61*unite),y+(14.7*unite),x+(130*unite),y+(29.9*unite), outline="")
         self.ext5 = self.canvas.create_rectangle(x+(29.61*unite),y+(-0.3*unite),x+(130*unite),y+(9.9*unite), outline="")
         situation = randint(0, 2)
+        print(situation)
 
         if self.niveau == 1:
             #Rectangles du "jeu" a proprement parlé
@@ -120,11 +122,31 @@ class vehicule:
 
 
     
-        # def permettant de selectionner et bouger les rectangles objets
+    # def permettant de selectionner et bouger les rectangles objets
     def mouseDown(self, event):
         self.x1, self.y1 = event.x, event.y
         self.selObject = self.canvas.find_closest(self.x1, self.y1) 
     
+    #Fonction permettant de faire les sauvegardes
+    #TODO /!\ déplacer cette fonction dans la class user quand elle sera crée  
+    def DumpSauvegarde(self,pseudo,score):
+        print("Voici le score {0} de {1}".format(self.pseudo,self.score))
+        with open('sauvegarde.json') as json_data_r:
+            data_dict = json.load(json_data_r)
+        
+        for x in data_dict:
+            if x == pseudo:
+                for y in data_dict[x]["score"]:
+                    if self.niveau == 1:
+                        print(data_dict[x]["score"][0])
+                        break
+                    if self.niveau == 2:
+                        print(data_dict[x]["score"][1])
+                        break
+                    if self.niveau == 3:
+                        print(data_dict[x]["score"][2])
+                        break
+
     #Fonction qui nous permet de bloquer les rectangles objets entre eux mais aussi de "gagner" lorsqu'un rectangle particulier atteint une certaine coordonée      
     def FreeToMove(self,X=0,Y=0):
         coord = self.canvas.coords(self.selObject[0])
@@ -136,6 +158,7 @@ class vehicule:
                     if self.canvas.coords(self.carreRouge)[0] >= 650:
                         print ("Gagné !")
                         self.varVictoire = 1
+                        self.DumpSauvegarde(self.pseudo,self.score)
                         self.niveausuivant(self.score)
                         break
                 elif(coordR[0]<=coord[0]+X<=coordR[2] and coordR[1]<=coord[1]+Y<=coordR[3]) or\

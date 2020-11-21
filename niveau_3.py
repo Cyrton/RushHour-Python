@@ -12,8 +12,9 @@ from vehicule import *
 
 #La meme chose que pour le niveau 1                   
 class ApplicationNv3(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo):
         self.canvas_profil = canvas_profil
+        self.pseudo = pseudo
         self.canvas_profil.destroy()
         self.fenetre_P = fenetre_P
         self.root= self.fenetre_P

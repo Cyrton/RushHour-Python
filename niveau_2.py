@@ -13,8 +13,9 @@ from niveau_3 import *
 
 #La meme chose que pour le niveau 1        
 class ApplicationNv2(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo):
         self.canvas_profil = canvas_profil
+        self.pseudo = pseudo
         self.canvas_profil.destroy()
         self.fenetre_P = fenetre_P
         self.score =score
@@ -47,4 +48,4 @@ class ApplicationNv2(ApplicationBase,vehicule):
 
     def nextNiveau(self):
         self.canvas.destroy()
-        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil) 
+        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo) 

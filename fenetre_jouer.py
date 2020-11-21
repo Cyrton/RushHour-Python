@@ -23,7 +23,7 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
                 Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
                     
             else:
-                data_dict[pseudo] = {"historique":[],"score":{}}
+                data_dict[pseudo] = {"historique":[],"score":[]}
                 with open('sauvegarde.json','w') as json_data_w:
                     json.dump(data_dict,json_data_w)
                     print("Joueur ajouter")

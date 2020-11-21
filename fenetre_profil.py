@@ -42,11 +42,11 @@ def chargement(pseudo,canvas_profil,fenetre_P,score):
                 li_sauvegarde = data_dict[x]["historique"]
 
                 if data_dict[x]["historique"][a] == 1:
-                    niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil)
+                    niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
                 elif data_dict[x]["historique"][a] == 2:
-                    niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil)
+                    niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
                 else:
-                    niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil)
+                    niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
 
                 sauvegardeJ= "Niveau: "+str(data_dict[x]["historique"][a])
                 bSave = Button(Frame1, text=sauvegardeJ,command=  niveau,fg ='black',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
@@ -73,7 +73,7 @@ def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
     label1 = Label(canvas_profil, text="Profil de {0}".format(pseudo),bg = 'sky blue',font="Arial 16 underline ")
     label1.pack(padx=0,pady=35)
 
-    boutonGO = Button(canvas_profil, text="Jouer", command= lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO = Button(canvas_profil, text="Jouer", command= lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
 
     bRetour = Button(canvas_profil, text="RETOUR AU MENU", command=lambda :Fenetre_Jouer(fenetre_P,Fenetre_Jouer,NONE),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
