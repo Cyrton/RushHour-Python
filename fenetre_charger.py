@@ -6,6 +6,7 @@ Created on Sun May 07 11:11:12 2017
 """
 from tkinter import *
 from PIL import Image
+import pandas as pd 
 
 #Fonction de la fenêtre Charger
 def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
