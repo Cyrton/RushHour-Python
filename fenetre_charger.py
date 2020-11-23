@@ -52,15 +52,9 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
                     niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil)
 
                 sauvegardeJ= "Niveau: "+str(data_dict[x]["score"][a])
-                bSave = Button(Frame1, text=sauvegardeJ,command=  niveau,fg ='black',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
-                bDelete = Button(Frame1, text="Supprimer \nla Sauvegarde",command= lambda: supprimer_sauvegarde(li_sauvegarde,pseudo,data_dict),fg ='red',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
-
-                bSave.place(anchor=CENTER, x=250, y=varY)
-                bDelete.place(anchor=CENTER, x=650, y=varY)
                 varY += 100
                 a += 1
 
     bRetour = Button(canvas_classement, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,NONE,canvas_classement),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.place(anchor=CENTER, x=450, y=600)
-    #bRetour.pack(padx=0,pady=15)
     fenetre_P.mainloop()
