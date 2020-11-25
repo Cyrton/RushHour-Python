@@ -23,7 +23,7 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
                 Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
                     
             else:
-                data_dict[pseudo] = {"historique":[],"score":[]}
+                data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
                 with open('sauvegarde.json','w') as json_data_w:
                     json.dump(data_dict,json_data_w)
                     print("Joueur ajouter")
@@ -33,10 +33,14 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
    
 
 #Fonction de la fenêtre Jouer
-def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general):
+def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fenetre_destroy):
     print("Fenetre_Jouer")
     
-    canvas_general.destroy()
+    if fenetre_destroy == 0:
+        canvas_general.destroy()
+    if fenetre_destroy == 1:
+        canvas_profil.destroy()
+
     canvas_jouer = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
     canvas_jouer.pack(side=TOP, fill=BOTH, expand=YES)
     

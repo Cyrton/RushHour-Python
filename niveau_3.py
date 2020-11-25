@@ -36,8 +36,6 @@ class ApplicationNv3(ApplicationBase,vehicule):
         self.root.mainloop()
                                
     def niveausuivant(self,score):
-        boutton2 = Button(self.root,text="Sauvergarde",bg="#86DED2",width =25,height=1 )
-        boutton2.place(anchor=CENTER, x=450,y=635)
         label=Label(self.root,text="VOTRE SCORE !\n\n" + str(score),fg="black",bg="#759EFE",width=25,height=5)
         label.place(anchor=CENTER, x=200,y=635)
         label2=Label(self.root,text="VOTRE SCORE !\n\n" + str(score),fg="black",bg="#759EFE",width=25,height=5)

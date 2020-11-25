@@ -60,7 +60,7 @@ def chargement(pseudo,canvas_profil,fenetre_P,score):
 #Fonction de la fenêtre Jouer
 def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
     print("Fenetre_profil")
-    
+
     canvas_jouer.destroy()
     canvas_profil = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
     canvas_profil.pack(side=TOP, fill=BOTH, expand=YES)
@@ -76,7 +76,7 @@ def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
     boutonGO = Button(canvas_profil, text="Jouer", command= lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
 
-    bRetour = Button(canvas_profil, text="RETOUR AU MENU", command=lambda :Fenetre_Jouer(fenetre_P,Fenetre_Jouer,NONE),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
+    bRetour = Button(canvas_profil, text="RETOUR AU MENU", command=lambda :Fenetre_Jouer(fenetre_P,Fenetre_Jouer,NONE,canvas_profil,1),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.pack(padx=0,pady=15)
 
     label2 = Label(canvas_profil, text="Sauvegarde",bg = 'sky blue',font="Arial 16 underline ")
