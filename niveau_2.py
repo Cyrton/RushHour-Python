@@ -26,8 +26,10 @@ class ApplicationNv2(ApplicationBase,vehicule):
         self.fenetre_P = fenetre_P
         self.score =score
         self.fenetre_P = fenetre_P
-        self.root= self.fenetre_P
-        self.root.title('UNBLOCK THE BLOCK - NIVEAU 2')
+        self.root=  Canvas(self.fenetre_P,width=900, height=800)
+        self.root.pack(side=TOP, fill=BOTH, expand=YES)
+
+        self.fenetre_P.title('UNBLOCK THE BLOCK - NIVEAU 2')
         
         self.canvas = Canvas(self.root, bg="#FECF4C", width=0, height=399)
         self.canvas.pack(side=TOP, fill=BOTH, expand=YES)

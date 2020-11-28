@@ -58,12 +58,13 @@ def chargement(pseudo,canvas_profil,fenetre_P,score):
                 a += 1
 
 #Fonction de la fenêtre Jouer
-def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,fenetre_d):
+def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,fenetre_d,canvas_level):
     print("Fenetre_profil")
 
     if fenetre_d == 0:
         canvas_jouer.destroy()
     if fenetre_d == 1:
+        canvas_level.destroy()
         print("detruit")
 
     canvas_profil = Canvas(fenetre_P,width=900, height=800,bg='sky blue')

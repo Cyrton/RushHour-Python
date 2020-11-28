@@ -23,8 +23,10 @@ class ApplicationNv3(ApplicationBase,vehicule):
         self.pseudo = pseudo
         self.canvas_profil.destroy()
         self.fenetre_P = fenetre_P
-        self.root= self.fenetre_P
-        self.root.title('UNBLOCK THE BLOCK - NIVEAU 3')
+        self.root=  Canvas(self.fenetre_P,width=900, height=800)
+        self.root.pack(side=TOP, fill=BOTH, expand=YES)
+
+        self.fenetre_P.title('UNBLOCK THE BLOCK - NIVEAU 3')
 
         self.canvas = Canvas(self.root, bg="#FE5227", width=0, height=399)
         self.canvas.pack(side=TOP, fill=BOTH, expand=YES)

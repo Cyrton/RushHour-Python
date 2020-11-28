@@ -24,11 +24,13 @@ class ApplicationNv1(ApplicationBase):
         self.Fenetre_profil = Fenetre_profil
         self.fenetre_P = fenetre_P
         self.canvas_profil = canvas_profil
-        self.pseudo = pseudo
         self.canvas_profil.destroy()
-        self.root= self.fenetre_P
-        self.root.title('UNBLOCK THE BLOCK - NIVEAU 1')
-        
+        self.pseudo = pseudo
+        self.root=  Canvas(self.fenetre_P,width=900, height=800)
+        self.root.pack(side=TOP, fill=BOTH, expand=YES)
+
+        self.fenetre_P.title('UNBLOCK THE BLOCK - NIVEAU 1')
+
         #Canvas
         self.canvas = Canvas(self.root, bg="light green", width=700, height=500)
         self.canvas.pack(side=TOP, fill=BOTH, expand=YES)
