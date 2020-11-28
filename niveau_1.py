@@ -15,19 +15,22 @@ import time
 
 #Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
 class ApplicationNv1(ApplicationBase):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer):
 
         self.unite = unite
         self.x = x
         self.y = y
 
         self.Fenetre_profil = Fenetre_profil
+        self.Fenetre_Principale = Fenetre_Principale
+        self.Fenetre_Jouer = Fenetre_Jouer
         self.fenetre_P = fenetre_P
         self.canvas_profil = canvas_profil
         self.canvas_profil.destroy()
         self.pseudo = pseudo
         self.root=  Canvas(self.fenetre_P,width=900, height=800)
         self.root.pack(side=TOP, fill=BOTH, expand=YES)
+
 
         self.fenetre_P.title('UNBLOCK THE BLOCK - NIVEAU 1')
 
@@ -59,6 +62,6 @@ class ApplicationNv1(ApplicationBase):
     
     #Def de lancement du niveau 2
     def nextNiveau(self):
-        self.canvas.destroy()
-        ApplicationNv2(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo,self.Fenetre_profil)   
+        self.root.destroy()
+        ApplicationNv2(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo,self.Fenetre_profil,self.Fenetre_Principale,self.Fenetre_Jouer)   
     

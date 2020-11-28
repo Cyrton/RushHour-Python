@@ -11,18 +11,20 @@ from niveau_base import *
 from vehicule import *
 
 #La meme chose que pour le niveau 1                   
-class ApplicationNv3(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil):
+class ApplicationNv3(ApplicationBase):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer):
 
         self.unite = unite
         self.x = x
         self.y = y
 
         self.Fenetre_profil = Fenetre_profil
-        self.canvas_profil = canvas_profil
-        self.pseudo = pseudo
-        self.canvas_profil.destroy()
+        self.Fenetre_Principale = Fenetre_Principale
+        self.Fenetre_Jouer = Fenetre_Jouer
         self.fenetre_P = fenetre_P
+        self.canvas_profil = canvas_profil
+        self.canvas_profil.destroy()
+        self.pseudo = pseudo
         self.root=  Canvas(self.fenetre_P,width=900, height=800)
         self.root.pack(side=TOP, fill=BOTH, expand=YES)
 

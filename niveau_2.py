@@ -12,20 +12,20 @@ from vehicule import *
 from niveau_3 import *
 
 #La meme chose que pour le niveau 1        
-class ApplicationNv2(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil):
+class ApplicationNv2(ApplicationBase):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer):
        
         self.unite = unite
         self.x = x
         self.y = y
 
         self.Fenetre_profil = Fenetre_profil
+        self.Fenetre_Principale = Fenetre_Principale
+        self.Fenetre_Jouer = Fenetre_Jouer
+        self.fenetre_P = fenetre_P
         self.canvas_profil = canvas_profil
-        self.pseudo = pseudo
         self.canvas_profil.destroy()
-        self.fenetre_P = fenetre_P
-        self.score =score
-        self.fenetre_P = fenetre_P
+        self.pseudo = pseudo
         self.root=  Canvas(self.fenetre_P,width=900, height=800)
         self.root.pack(side=TOP, fill=BOTH, expand=YES)
 
@@ -54,5 +54,5 @@ class ApplicationNv2(ApplicationBase,vehicule):
         label2.place(anchor=CENTER, x=700,y=635)
 
     def nextNiveau(self):
-        self.canvas.destroy()
-        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo,self.Fenetre_profil) 
+        self.root.destroy()
+        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo,self.Fenetre_profil,self.Fenetre_Principale,self.Fenetre_Jouer) 
