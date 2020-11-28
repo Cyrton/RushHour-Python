@@ -13,7 +13,13 @@ from niveau_3 import *
 
 #La meme chose que pour le niveau 1        
 class ApplicationNv2(ApplicationBase,vehicule):
-    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo):
+    def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil):
+       
+        self.unite = unite
+        self.x = x
+        self.y = y
+
+        self.Fenetre_profil = Fenetre_profil
         self.canvas_profil = canvas_profil
         self.pseudo = pseudo
         self.canvas_profil.destroy()
@@ -21,7 +27,6 @@ class ApplicationNv2(ApplicationBase,vehicule):
         self.score =score
         self.fenetre_P = fenetre_P
         self.root= self.fenetre_P
-        self.root.geometry("900x800")
         self.root.title('UNBLOCK THE BLOCK - NIVEAU 2')
         
         self.canvas = Canvas(self.root, bg="#FECF4C", width=0, height=399)
@@ -35,7 +40,7 @@ class ApplicationNv2(ApplicationBase,vehicule):
 
         print ("Niveau 2")
         self.niveau = 2
-        self.Niveau(10, 300,  125)
+        self.Niveau(self.unite, self.x,  self.y)
         self.root.mainloop()
                         
     def niveausuivant(self,score):
@@ -48,4 +53,4 @@ class ApplicationNv2(ApplicationBase,vehicule):
 
     def nextNiveau(self):
         self.canvas.destroy()
-        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo) 
+        ApplicationNv3(10, 300,  125,score,self.fenetre_P,self.canvas_profil,self.pseudo,self.Fenetre_profil) 

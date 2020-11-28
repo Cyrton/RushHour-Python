@@ -33,7 +33,6 @@ class vehicule:
         self.rectV = []
 
         situation = randint(0, (len(data_dict["niveau"+str(self.niveau)])-1))
-        print(len(data_dict["niveau"+str(self.niveau)]))
 
         #Rectangles du "jeu" a proprement parlé
         for e in data_dict["niveau"+str(self.niveau)][str(situation)]:
@@ -54,7 +53,6 @@ class vehicule:
                 self.rectV.append(self.e)
 
             self.rectAll = self.rectH + self.rectV +self.bloq
-        print(self.rectH)
                                 
     # def permettant de selectionner et bouger les rectangles objets
     def mouseDown(self, event):
@@ -64,7 +62,7 @@ class vehicule:
     #Fonction permettant de faire les sauvegardes
     #TODO /!\ déplacer cette fonction dans la class user quand elle sera crée  
     def DumpSauvegarde(self,pseudo,score):
-        print("Voici le score {0} de {1}".format(self.pseudo,self.score))
+        print("Voici le score de {0} de {1}".format(self.pseudo,self.score))
         with open('sauvegarde.json') as json_data_r:
             data_dict = json.load(json_data_r)
         
@@ -90,7 +88,7 @@ class vehicule:
                                 json.dump(data_dict,json_data_w)
                         break
 
-    #Fonction qui nous permet de bloquer les rectangles objets entre eux mais aussi de "gagner" lorsqu'un rectangle particulier atteint une certaine coordonée      
+    #Fonction qui nous permet de bloquer les rectangles objets entre eux mais aussi de "gagner" lorsque le rectangle rouge atteint une certaine coordonée      
     def FreeToMove(self,X=0,Y=0):
         coord = self.canvas.coords(self.selObject[0])
         cond = True

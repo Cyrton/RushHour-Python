@@ -12,7 +12,7 @@ import json
 
 #Def qui permet de dire si un pseudo est deja enregisté
 
-def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
+def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
     if pseudo == "":
         print("Vous n'avez pas rentrer de pseudo")
     else:
@@ -20,14 +20,14 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
             with open('sauvegarde.json') as json_data_r:
                 data_dict = json.load(json_data_r)
             if pseudo in data_dict.keys():
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0)
                     
             else:
                 data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
                 with open('sauvegarde.json','w') as json_data_w:
                     json.dump(data_dict,json_data_w)
                     print("Joueur ajouter")
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0)
         except:
             print("Le fichier Json est vide")    
    
@@ -46,7 +46,6 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     
     #Mise en page (Fenêtre, Titre, Texte, Entrée Texte, Boutons)
     fenetre_P['bg']='sky blue'
-    fenetre_P.geometry("900x800")
     fenetre_P.title('UNBLOCK THE BLOCK')
     
     label1 = Label(canvas_jouer, text="Règle du jeu",bg = 'sky blue',font="Arial 16 underline ")
@@ -69,7 +68,7 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     
     entree = Entry(canvas_jouer, textvariable=pseudo, width=20,bg='white')
     entree.pack(padx=0,pady=5)
-    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get()),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get(),Fenetre_Principale),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
     
     label4 = Label(canvas_jouer,text="     Le jeu a été réalisé par :\n\
@@ -84,4 +83,3 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     bRetour.pack(padx=0,pady=15)
     fenetre_P.mainloop()
 
-#Fenetre_Principale(fenetre_P,canvas_jouer,NONE)

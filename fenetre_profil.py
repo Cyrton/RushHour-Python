@@ -42,11 +42,11 @@ def chargement(pseudo,canvas_profil,fenetre_P,score):
                 li_sauvegarde = data_dict[x]["historique"]
 
                 if data_dict[x]["historique"][a] == 1:
-                    niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
+                    niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil)
                 elif data_dict[x]["historique"][a] == 2:
-                    niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
+                    niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil)
                 else:
-                    niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil,pseudo)
+                    niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil)
 
                 sauvegardeJ= "Niveau: "+str(data_dict[x]["historique"][a])
                 bSave = Button(Frame1, text=sauvegardeJ,command=  niveau,fg ='black',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
@@ -58,25 +58,28 @@ def chargement(pseudo,canvas_profil,fenetre_P,score):
                 a += 1
 
 #Fonction de la fenêtre Jouer
-def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
+def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,fenetre_d):
     print("Fenetre_profil")
 
-    canvas_jouer.destroy()
+    if fenetre_d == 0:
+        canvas_jouer.destroy()
+    if fenetre_d == 1:
+        print("detruit")
+
     canvas_profil = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
     canvas_profil.pack(side=TOP, fill=BOTH, expand=YES)
     
     #Mise en page (Fenêtre, Titre, Texte, Entrée Texte, Boutons)
     fenetre_P['bg']='sky blue'
-    fenetre_P.geometry("900x800")
     fenetre_P.title('UNBLOCK THE BLOCK')
 
     label1 = Label(canvas_profil, text="Profil de {0}".format(pseudo),bg = 'sky blue',font="Arial 16 underline ")
     label1.pack(padx=0,pady=35)
 
-    boutonGO = Button(canvas_profil, text="Jouer", command= lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO = Button(canvas_profil, text="Jouer", command= lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
 
-    bRetour = Button(canvas_profil, text="RETOUR AU MENU", command=lambda :Fenetre_Jouer(fenetre_P,Fenetre_Jouer,NONE,canvas_profil,1),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
+    bRetour = Button(canvas_profil, text="RETOUR AU MENU", command=lambda :Fenetre_Jouer(fenetre_P,Fenetre_Principale,NONE,canvas_profil,1),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.pack(padx=0,pady=15)
 
     label2 = Label(canvas_profil, text="Sauvegarde",bg = 'sky blue',font="Arial 16 underline ")

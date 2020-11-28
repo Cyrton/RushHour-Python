@@ -9,10 +9,12 @@ from PIL import Image
 from pickle import dump, load
 import threading
 import time
+from vehicule import *
+
 
 score = 2000
 #Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
-class ApplicationBase(object):
+class ApplicationBase(vehicule):
     #Def qui permet de crée les boutons communs à tous les niveaux
     def __init__(self):
         self.score = score
@@ -48,7 +50,7 @@ class ApplicationBase(object):
                 self.score -= 15
             self.fenetre_P.after(1000,self.ScoreJoueur)
              
-    #Def qui permet de revenir au menu principal 
+    #Def qui permet de revenir à la page profil 
     def RetourPrincipale(self):
-        self.root.destroy()
-        #Fenetre_Principale()
+        #self.root.destroy()
+        self.Fenetre_profil(NONE,self.fenetre_P,NONE,self.pseudo,NONE,1)
