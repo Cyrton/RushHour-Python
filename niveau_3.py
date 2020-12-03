@@ -5,7 +5,6 @@ Created on Sun May 07 11:11:12 2017
 @author: marti
 """
 from tkinter import *
-from PIL import Image
 from pickle import dump, load
 from niveau_base import *
 from vehicule import *

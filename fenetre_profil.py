@@ -5,7 +5,6 @@ Created on Sun May 07 11:11:12 2017
 @author: marti
 """
 from tkinter import *
-from PIL import Image
 from niveau_1 import *
 from niveau_2 import *
 from niveau_3 import *
@@ -40,21 +39,21 @@ def chargement(pseudo,canvas_profil,fenetre_P,score,Fenetre_Principale,Fenetre_J
             for y in data_dict[x]["historique"]:
                 
                 li_sauvegarde = data_dict[x]["historique"]
+                if data_dict[x]["historique"][a] != 0:
+                    if data_dict[x]["historique"][a] == 1:
+                        niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
+                    elif data_dict[x]["historique"][a] == 2:
+                        niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
+                    else:
+                        niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
 
-                if data_dict[x]["historique"][a] == 1:
-                    niveau = lambda: ApplicationNv1(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
-                elif data_dict[x]["historique"][a] == 2:
-                    niveau = lambda: ApplicationNv2(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
-                else:
-                    niveau = lambda: ApplicationNv3(10, 300,  125,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer)
+                    sauvegardeJ= "Niveau: "+str(data_dict[x]["historique"][a])
+                    bSave = Button(Frame1, text=sauvegardeJ,command=  niveau,fg ='black',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
+                    bDelete = Button(Frame1, text="Supprimer \nla Sauvegarde",command= lambda: supprimer_sauvegarde(li_sauvegarde,pseudo,data_dict),fg ='red',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
 
-                sauvegardeJ= "Niveau: "+str(data_dict[x]["historique"][a])
-                bSave = Button(Frame1, text=sauvegardeJ,command=  niveau,fg ='black',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
-                bDelete = Button(Frame1, text="Supprimer \nla Sauvegarde",command= lambda: supprimer_sauvegarde(li_sauvegarde,pseudo,data_dict),fg ='red',bg = '#FEA347',activebackground='grey',font="Arial 11 bold ",width =35, height = 2)
-
-                bSave.place(anchor=CENTER, x=250, y=varY)
-                bDelete.place(anchor=CENTER, x=650, y=varY)
-                varY += 100
+                    bSave.place(anchor=CENTER, x=250, y=varY)
+                    bDelete.place(anchor=CENTER, x=650, y=varY)
+                    varY += 100
                 a += 1
 
 #Fonction de la fenêtre Jouer

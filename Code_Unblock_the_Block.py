@@ -6,7 +6,6 @@ Created on Sun May 07 11:11:12 2017
 """
 
 from tkinter import *
-from PIL import Image
 from pickle import dump, load
 from fenetre_charger import *
 from fenetre_jouer import *    
