@@ -15,26 +15,37 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     canvas_general.destroy()
     print("Fenetre_Classement")
 
+    #Partie pour récuperer les données du fichier json sauvegarde
     with open('sauvegarde.json') as json_data_r:
         data_dict = json.load(json_data_r)
     
     indice = 0
-    dict_classement={"joueur":{},"niveau 1":{}, "niveau 2":{}, "niveau 3":{}}
+    dict_classement1={"joueur":{},"niveau 1":{}}
+    dict_classement2={"joueur":{},"niveau 2":{}}
+    dict_classement3={"joueur":{},"niveau 3":{}}
 
     for e in data_dict:
-        dict_classement["joueur"][indice]=e
-        dict_classement["niveau 1"][indice]=data_dict[e]["score"][0]
-        dict_classement["niveau 2"][indice]=data_dict[e]["score"][1]
-        dict_classement["niveau 3"][indice]=data_dict[e]["score"][2]
+        dict_classement1["joueur"][indice]=e
+        dict_classement1["niveau 1"][indice]=data_dict[e]["score"][0]
+        dict_classement2["joueur"][indice]=e
+        dict_classement2["niveau 2"][indice]=data_dict[e]["score"][1]
+        dict_classement3["joueur"][indice]=e
+        dict_classement3["niveau 3"][indice]=data_dict[e]["score"][2]
         indice += 1
 
-    #print(dict_classement)
+    #print(dict_classement1)
+    #print(dict_classement2)
+    #print(dict_classement3)
 
-    #Partie pour récuperer les données du fichier json sauvegarde
-    data = pd.DataFrame.from_dict(dict_classement)
-    #data.sort_values("Price")
-    #data["Rank"] = data["Price"].rank() 
-    print (data)
+    data1 = pd.DataFrame.from_dict(dict_classement1)
+    data2 = pd.DataFrame.from_dict(dict_classement2)
+    data3 = pd.DataFrame.from_dict(dict_classement3)
+
+    data1.sort_values(by=['niveau 1'], inplace=True, ascending=False)
+    data2.sort_values(by=['niveau 2'], inplace=True, ascending=False)
+    data3.sort_values(by=['niveau 3'], inplace=True, ascending=False)
+
+    #print(data2)
     
     #Mise en page (Fenêtre, Titre, Texte, Boutons)
     canvas_classement = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
@@ -47,13 +58,15 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     label.pack(padx=0,pady=50)
 
     #mise en page des colonnes pour les classements
-    labelNiveau1 = Label(canvas_classement, text=data, bg='sky blue', font = "Arial 13 underline")
-    labelNiveau2 = Label(canvas_classement, text="Niveau 2", bg='sky blue', font = "Arial 13 underline")
-    labelNiveau3 = Label(canvas_classement, text="Niveau 3", bg='sky blue', font = "Arial 13 underline")
+    labelNiveau1 = Label(canvas_classement, text=data1, bg='sky blue', font = "Arial 13")
+    labelNiveau2 = Label(canvas_classement, text=data2, bg='sky blue', font = "Arial 13")
+    labelNiveau3 = Label(canvas_classement, text=data3, bg='sky blue', font = "Arial 13")
     
     labelNiveau1.place(anchor=CENTER, x=150, y=150)
     labelNiveau2.place(anchor=CENTER, x=450, y=150)
     labelNiveau3.place(anchor=CENTER, x=750, y=150)
+
+    
 
     bRetour = Button(canvas_classement, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,NONE,canvas_classement),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.place(anchor=CENTER, x=450, y=600)
