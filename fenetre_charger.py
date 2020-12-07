@@ -15,18 +15,27 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     canvas_general.destroy()
     print("Fenetre_Classement")
 
-     #Partie pour récuperer les données du fichier json sauvegarde
-    #dict_pandas = {joueur, score, niveau}
-    data = pd.read_json ('sauvegarde.json')
-    for Joueurs in data:
-        
-    data.sort_values("Niveau1")
-    data["Rank"] = data["Niveau1"].rank() 
-    print (data)
     with open('sauvegarde.json') as json_data_r:
         data_dict = json.load(json_data_r)
+    
+    indice = 0
+    dict_classement={"joueur":{},"niveau 1":{}, "niveau 2":{}, "niveau 3":{}}
 
+    for e in data_dict:
+        dict_classement["joueur"][indice]=e
+        dict_classement["niveau 1"][indice]=data_dict[e]["score"][0]
+        dict_classement["niveau 2"][indice]=data_dict[e]["score"][1]
+        dict_classement["niveau 3"][indice]=data_dict[e]["score"][2]
+        indice += 1
 
+    #print(dict_classement)
+
+    #Partie pour récuperer les données du fichier json sauvegarde
+    data = pd.DataFrame.from_dict(dict_classement)
+    #data.sort_values("Price")
+    #data["Rank"] = data["Price"].rank() 
+    print (data)
+    
     #Mise en page (Fenêtre, Titre, Texte, Boutons)
     canvas_classement = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
     canvas_classement.pack(side=TOP, fill=BOTH, expand=YES)
