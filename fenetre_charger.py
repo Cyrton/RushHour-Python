@@ -19,6 +19,7 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     with open('sauvegarde.json') as json_data_r:
         data_dict = json.load(json_data_r)
     
+    #structure des données pour les joueurs par niveau avec leurs scores
     indice = 0
     dict_classement1={"joueur":{},"niveau 1":{}}
     dict_classement2={"joueur":{},"niveau 2":{}}
@@ -41,6 +42,7 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     data2 = pd.DataFrame.from_dict(dict_classement2)
     data3 = pd.DataFrame.from_dict(dict_classement3)
 
+    #trier l'ordre de classement sur les scores par niveau
     data1.sort_values(by=['niveau 1'], inplace=True, ascending=False)
     data2.sort_values(by=['niveau 2'], inplace=True, ascending=False)
     data3.sort_values(by=['niveau 3'], inplace=True, ascending=False)
@@ -65,8 +67,6 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     labelNiveau1.place(anchor=CENTER, x=150, y=150)
     labelNiveau2.place(anchor=CENTER, x=450, y=150)
     labelNiveau3.place(anchor=CENTER, x=750, y=150)
-
-    
 
     bRetour = Button(canvas_classement, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,NONE,canvas_classement),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.place(anchor=CENTER, x=450, y=600)
