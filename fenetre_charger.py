@@ -43,9 +43,15 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
     data3 = pd.DataFrame.from_dict(dict_classement3)
 
     #trier l'ordre de classement sur les scores par niveau
-    data1.sort_values(by=['niveau 1'], inplace=True, ascending=False)
-    data2.sort_values(by=['niveau 2'], inplace=True, ascending=False)
-    data3.sort_values(by=['niveau 3'], inplace=True, ascending=False)
+    data1 = data1.sort_values(by=["niveau 1"], ascending=False)
+    data1 = data1.reset_index(inplace=False)
+    del data1["index"]
+    data2 = data2.sort_values(by=["niveau 2"], ascending=False)
+    data2 = data2.reset_index(inplace=False)
+    del data2["index"]
+    data3 = data3.sort_values(by=["niveau 3"], ascending=False)
+    data3 = data3.reset_index(inplace=False)
+    del data3["index"]
 
     #print(data2)
     
