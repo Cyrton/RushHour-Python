@@ -5,14 +5,13 @@ Created on Sun May 07 11:11:12 2017
 @author: marti
 """
 from tkinter import *
-from PIL import Image
 from fenetre_profil import *
 import json
 
 
 #Def qui permet de dire si un pseudo est deja enregisté
 
-def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
+def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
     if pseudo == "":
         print("Vous n'avez pas rentrer de pseudo")
     else:
@@ -20,29 +19,32 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo):
             with open('sauvegarde.json') as json_data_r:
                 data_dict = json.load(json_data_r)
             if pseudo in data_dict.keys():
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
                     
             else:
-                data_dict[pseudo] = {"historique":[],"score":{}}
+                data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
                 with open('sauvegarde.json','w') as json_data_w:
                     json.dump(data_dict,json_data_w)
                     print("Joueur ajouter")
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo)
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
         except:
             print("Le fichier Json est vide")    
    
 
 #Fonction de la fenêtre Jouer
-def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general):
+def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fenetre_destroy):
     print("Fenetre_Jouer")
     
-    canvas_general.destroy()
+    if fenetre_destroy == 0:
+        canvas_general.destroy()
+    if fenetre_destroy == 1:
+        canvas_profil.destroy()
+
     canvas_jouer = Canvas(fenetre_P,width=900, height=800,bg='sky blue')
     canvas_jouer.pack(side=TOP, fill=BOTH, expand=YES)
     
     #Mise en page (Fenêtre, Titre, Texte, Entrée Texte, Boutons)
     fenetre_P['bg']='sky blue'
-    fenetre_P.geometry("900x800")
     fenetre_P.title('UNBLOCK THE BLOCK')
     
     label1 = Label(canvas_jouer, text="Règle du jeu",bg = 'sky blue',font="Arial 16 underline ")
@@ -65,7 +67,7 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general):
     
     entree = Entry(canvas_jouer, textvariable=pseudo, width=20,bg='white')
     entree.pack(padx=0,pady=5)
-    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get()),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get(),Fenetre_Principale),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
     
     label4 = Label(canvas_jouer,text="     Le jeu a été réalisé par :\n\
@@ -80,4 +82,3 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general):
     bRetour.pack(padx=0,pady=15)
     fenetre_P.mainloop()
 
-#Fenetre_Principale(fenetre_P,canvas_jouer,NONE)
