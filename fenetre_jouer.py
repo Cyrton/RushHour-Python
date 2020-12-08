@@ -50,12 +50,12 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     label1 = Label(canvas_jouer, text="Règle du jeu",bg = 'sky blue',font="Arial 16 underline ")
     label2 = Label(canvas_jouer, text="    Le but du jeu est simple :\n\
     \n    Il faut faire sortir le Rectangle Rouge du PUZZLE dans le temps imparti.\
-    \n    Vous commencerez avec un total de '2000 points' que vous perdrez au fil du temps ET des niveaux.\
-    \n    Votre but sera donc de terminer chaque niveau le plus vite possible afin d'avoir un maximum de points a la fin !\n\n\
+    \n    Vous commencerez avec un total de '2000 points' pour chaque niveaux.\
+    \n    Votre but sera donc de terminer chaque niveau le plus vite possible afin d'avoir un maximum de points a la fin du niveau !\n\n\
     \n    Sachant que :\n\
     \n    - Pour le 'NIVEAU 1' vous perdrez 5 points toutes les secondes;\
-    \n               - Pour le 'NIVEAU 2' vous perdrez 15 points toutes les deux secondes;\
-    \n          - Pour le 'NIVEAU 3' vous perdrez 30 points toutes les trois secondes.",bg = 'sky blue',font="Arial 12")
+    \n               - Pour le 'NIVEAU 2' vous perdrez 10 points toutes les secondes;\
+    \n          - Pour le 'NIVEAU 3' vous perdrez 20 points toutes les secondes.",bg = 'sky blue',font="Arial 12")
     label3 = Label(canvas_jouer, text=" Entrez votre nom :",bg = 'sky blue',font="Arial 8 bold")
     
     label1.pack(padx=0,pady=35)
@@ -71,10 +71,8 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     boutonGO.pack(padx=0,pady=15)
     
     label4 = Label(canvas_jouer,text="     Le jeu a été réalisé par :\n\
-    \n    MINCIUNESCU Aurélien\
-    \n    MINKA Léonard\
     \n    PERDAENS Martin\
-    \n  PIRET Nathan",bg ='#A0E3F7',font="Arial 10")
+    \n  TONGRES Cyril",bg ='#A0E3F7',font="Arial 10")
     label4.pack(padx=0,pady=15)
     
     
