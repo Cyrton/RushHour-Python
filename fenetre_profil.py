@@ -54,7 +54,6 @@ def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principal
     for x in data_dict:
         if x == pseudo:
             for y in data_dict[x]["historique"]:
-                print('y',y)
                 li_sauvegarde = data_dict[x]["historique"]
                 if data_dict[x]["historique"][a] != 0:
                     if data_dict[x]["historique"][a] == 1:

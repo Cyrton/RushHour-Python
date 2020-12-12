@@ -38,12 +38,10 @@ class user:
                         break
 
     def delete(self,li_sauvegarde,pseudo,data_dict):
-        b = 0
         self.historique = li_sauvegarde
         for y in self.historique:
-            print(b)
-            del self.historique[b]
-            b += 1
+            del self.historique[0]
+            break
         data_dict[pseudo]["historique"] = self.historique
 
         with open('sauvegarde.json','w') as json_data_w:
