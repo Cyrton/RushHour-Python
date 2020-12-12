@@ -9,26 +9,25 @@ from fenetre_profil import *
 import json
 
 
+
 #Def qui permet de dire si un pseudo est deja enregisté
 
 def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
     if pseudo == "":
         print("Vous n'avez pas rentrer de pseudo")
     else:
-        try:
-            with open('sauvegarde.json') as json_data_r:
-                data_dict = json.load(json_data_r)
-            if pseudo in data_dict.keys():
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
+        with open('sauvegarde.json') as json_data_r:
+            data_dict = json.load(json_data_r)
+        if pseudo in data_dict.keys():
+            Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
                     
-            else:
-                data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
-                with open('sauvegarde.json','w') as json_data_w:
-                    json.dump(data_dict,json_data_w)
-                    print("Joueur ajouter")
-                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
-        except:
-            print("Le fichier Json est vide")    
+        else:
+            data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
+            with open('sauvegarde.json','w') as json_data_w:
+                json.dump(data_dict,json_data_w)
+                print("Joueur ajouter")
+            Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
+ 
    
 
 #Fonction de la fenêtre Jouer

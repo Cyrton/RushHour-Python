@@ -8,9 +8,10 @@ from tkinter import *
 from pickle import dump, load
 from random import *
 import json
+from user import *
 
 
-class vehicule:
+class vehicule(user):
     def __init__(self,unite, x, y):
         self.unite = unite
         self.x = x
@@ -58,39 +59,6 @@ class vehicule:
         self.x1, self.y1 = event.x, event.y
         self.selObject = self.canvas.find_closest(self.x1, self.y1) 
     
-    #Fonction permettant de faire les sauvegardes
-    #TODO /!\ déplacer cette fonction dans la class user quand elle sera crée  
-    def DumpSauvegarde(self,pseudo,score):
-        indice = self.niveau-1
-        print("Voici le score de {0} de {1}".format(self.pseudo,self.score))
-        with open('sauvegarde.json') as json_data_r:
-            data_dict = json.load(json_data_r)
-        
-        for x in data_dict:
-            if x == pseudo:
-                for y in data_dict[x]["score"]:
-                    if self.niveau == 1:
-                        if data_dict[x]["score"][indice] < score:
-                            data_dict[x]["score"][indice] = score
-                            data_dict[x]["historique"][indice] = self.niveau
-                            with open('sauvegarde.json','w') as json_data_w:
-                                json.dump(data_dict,json_data_w)
-                        break
-                    elif self.niveau == 2:
-                        if data_dict[x]["score"][indice] < score:
-                            data_dict[x]["score"][indice] = score
-                            data_dict[x]["historique"][indice] = self.niveau
-                            with open('sauvegarde.json','w') as json_data_w:
-                                json.dump(data_dict,json_data_w)
-                        break
-                    elif self.niveau == 3:
-                        if data_dict[x]["score"][indice] < score:
-                            data_dict[x]["score"][indice] = score
-                            data_dict[x]["historique"][indice] = self.niveau
-                            with open('sauvegarde.json','w') as json_data_w:
-                                json.dump(data_dict,json_data_w)
-                        break
-
     #Fonction qui nous permet de bloquer les rectangles objets entre eux mais aussi de "gagner" lorsque le rectangle rouge atteint une certaine coordonée      
     def FreeToMove(self,X=0,Y=0):
         coord = self.canvas.coords(self.selObject[0])
@@ -102,7 +70,7 @@ class vehicule:
                     if self.canvas.coords(self.carreRouge)[0] >= 650:
                         print ("Gagné !")
                         self.varVictoire = 1
-                        self.DumpSauvegarde(self.pseudo,self.score)
+                        self.sauvegarde(self.pseudo,self.score)
                         self.niveausuivant(self.score)
                         break
                 elif(coordR[0]<=coord[0]+X<=coordR[2] and coordR[1]<=coord[1]+Y<=coordR[3]) or\

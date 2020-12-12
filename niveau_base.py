@@ -9,11 +9,12 @@ from pickle import dump, load
 import threading
 import time
 from vehicule import *
+from user import *
 
 
 score = 2000
 #Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
-class ApplicationBase(vehicule):
+class ApplicationBase(vehicule,user):
     #Def qui permet de crée les boutons communs à tous les niveaux
     def __init__(self):
         self.score = score
