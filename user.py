@@ -37,10 +37,10 @@ class user:
                                 json.dump(data_dict,json_data_w)
                         break
 
-    def delete(self,li_sauvegarde,pseudo,data_dict):
+    def delete(self,li_sauvegarde,pseudo,data_dict,index_delete):
         self.historique = li_sauvegarde
         for y in self.historique:
-            del self.historique[0]
+            del self.historique[index_delete]
             break
         data_dict[pseudo]["historique"] = self.historique
 

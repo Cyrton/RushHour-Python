@@ -18,6 +18,7 @@ def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
     else:
         with open('sauvegarde.json') as json_data_r:
             data_dict = json.load(json_data_r)
+            
         if pseudo in data_dict.keys():
             Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
                     
