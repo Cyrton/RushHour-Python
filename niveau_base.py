@@ -47,7 +47,7 @@ class ApplicationBase(vehicule,user):
             self.fenetre_P.after(1000,self.ScoreJoueur)
         if self.niveau == 3:
             if self.score > 0 and self.varVictoire == 0:
-                self.score -= 15
+                self.score -= 20
             self.fenetre_P.after(1000,self.ScoreJoueur)
              
     #Def qui permet de revenir à la page profil 
