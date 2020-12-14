@@ -1,6 +1,8 @@
 import unittest
-
+from fenetre_jouer import *
 from fenetre_charger import *
+from fenetre_profil import *
+
 with open('sauvegarde.json') as json_data_r:
         data_dict = json.load(json_data_r)
 
@@ -36,7 +38,11 @@ class TestProjet(unittest.TestCase):
         self.assertIsNot(data_car["niveau1"]["0"]["v1"]["orientation"], "v")
         self.assertIsNot(type(data_car["niveau1"]["0"]["v1"]["orientation"]), int)
 
+    def test_Jouer (self):
+        self.assertEqual(VerifPseudo(None, None, None, "", None), None)
     
+    def test_Profil (self):
+        self.assertEqual(Fenetre_profil(None, None, None, None, None, 0, None), 0)        
 
 
 if __name__ == '__main__':
