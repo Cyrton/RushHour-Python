@@ -8,6 +8,9 @@ from tkinter import *
 from PIL import Image
 import pandas as pd
 import json
+dict_classement1={}
+dict_classement2={}
+dict_classement3={}
 
 #Fonction de la fenêtre Charger
 def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
@@ -34,7 +37,7 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
         dict_classement3["niveau 3"][indice]=data_dict[e]["score"][2]
         indice += 1
 
-    #print(dict_classement1)
+    print(dict_classement1)
     #print(dict_classement2)
     #print(dict_classement3)
 
