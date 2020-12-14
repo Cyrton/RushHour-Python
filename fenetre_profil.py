@@ -73,6 +73,6 @@ def Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principal
 
                     varY += 100
                 index_chargement += 1
-    
+
     fenetre_P.mainloop()
 
