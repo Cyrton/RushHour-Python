@@ -37,18 +37,10 @@ class ApplicationBase(vehicule,user):
     
     #Def permettant d'ajuster l'enlevement des points par niveau et par secondes
     def ScoreJoueur(self):        
-        if self.niveau == 1:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 5
-            self.fenetre_P.after(1000,self.ScoreJoueur)
-        if self.niveau == 2:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 10
-            self.fenetre_P.after(1000,self.ScoreJoueur)
-        if self.niveau == 3:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 20
-            self.fenetre_P.after(1000,self.ScoreJoueur)
+        if self.score > 0 and self.varVictoire == 0:
+            self.score -= 20
+            self.fenetre_P.after(1000*self.niveau,self.ScoreJoueur)
+
              
     #Def qui permet de revenir à la page profil 
     def RetourPrincipale(self):
