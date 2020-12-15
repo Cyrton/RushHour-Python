@@ -13,21 +13,33 @@ import json
 #Def qui permet de dire si un pseudo est deja enregisté
 
 def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
-    if pseudo == "":
-        print("Vous n'avez pas rentrer de pseudo")
-    else:
-        with open('sauvegarde.json') as json_data_r:
-            data_dict = json.load(json_data_r)
-            
-        if pseudo in data_dict.keys():
-            Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
-                    
+    try:
+        if pseudo == "":
+            print("Vous n'avez pas rentrer de pseudo")
+            message_info = Message(canvas_jouer,text="Vous n'avez pas rentrer de pseudo",width=300,bg='red')
+            message_info.place(anchor=CENTER, x=450,y=400)
+
         else:
-            data_dict[pseudo] = {"historique":[],"score":[0,0,0]}
-            with open('sauvegarde.json','w') as json_data_w:
-                json.dump(data_dict,json_data_w)
-                print("Joueur ajouter")
-            Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
+            with open('sauvegarde.json') as json_data_r:
+                data_dict = json.load(json_data_r)
+                
+            if pseudo in data_dict.keys():
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
+                        
+            else:
+                data_dict[pseudo] = {"historique":[0,0,0],"score":[0,0,0]}
+                with open('sauvegarde.json','w') as json_data_w:
+                    json.dump(data_dict,json_data_w)
+                    print("Joueur ajouter")
+                Fenetre_profil(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale,0,NONE)
+    
+    except FileNotFoundError:
+        print("Fichier sauvegarde.json n'existe pas ")
+        with open('sauvegarde.json','a') as json_data_c:
+            json.dump({pseudo:{"historique":[0,0,0],"score":[0,0,0]}},json_data_c)
+            print("Fichier sauvegarde.json a été crée")
+
+
  
    
 
@@ -76,7 +88,7 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     label4.pack(padx=0,pady=15)
     
     
-    bRetour = Button(canvas_jouer, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,canvas_jouer,NONE),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
+    bRetour = Button(canvas_jouer, text="RETOUR AU MENU", command=lambda :Fenetre_Principale(fenetre_P,canvas_jouer,NONE,0),fg ='black',bg = '#FD4141',activebackground='#F96E6E',font="Arial 11 bold ",width =35, height = 1)
     bRetour.pack(padx=0,pady=15)
     fenetre_P.mainloop()
 

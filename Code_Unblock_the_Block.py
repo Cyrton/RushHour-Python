@@ -13,16 +13,12 @@ from fenetre_jouer import *
 #----------------------------------Programme Fenetre Principale-----------------------------------------
 
 #Fonction de la fenêtre principale
-def Fenetre_Principale(fenetre_P,canvas_jouer, canvas_classement):
-    
-    try:
-        canvas_classement.destroy()
-    except:
-        pass    
-    try:
+def Fenetre_Principale(fenetre_P,canvas_jouer, canvas_classement,fenetre_destroy):
+
+    if fenetre_destroy == 0:
         canvas_jouer.destroy()
-    except:
-        pass    
+    if fenetre_destroy == 1:
+        canvas_classement.destroy()    
     
     #Mise en page de la fenetre (Titre, Canvas, Image, Boutons)
     canvas_general = Canvas(fenetre_P,width=900, height=800,bg='light yellow')
@@ -55,6 +51,6 @@ fenetre_P.maxsize(width=900, height=800)
 fenetre_P['bg']='light yellow'
 fenetre_P.title('UNBLOCK THE BLOCK')
 nombreSauvegarde = 0
-Fenetre_Principale(fenetre_P,NONE,NONE)
+Fenetre_Principale(fenetre_P,NONE,NONE,NONE)
 #----------------------------------------------------------------------------------------------
 
