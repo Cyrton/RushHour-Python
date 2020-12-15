@@ -16,27 +16,13 @@ class user:
             for x in data_dict:
                 if x == pseudo:
                     for y in data_dict[x]["score"]:
-                        if self.niveau == 1:
-                            if data_dict[x]["score"][indice] < score:
-                                data_dict[x]["score"][indice] = score
-                                data_dict[x]["historique"][indice] = self.niveau
-                                with open('sauvegarde.json','w') as json_data_w:
-                                    json.dump(data_dict,json_data_w)
+                        if data_dict[x]["score"][indice] < score:
+                            data_dict[x]["score"][indice] = score
+                            data_dict[x]["historique"][indice] = self.niveau
+                            with open('sauvegarde.json','w') as json_data_w:
+                                json.dump(data_dict,json_data_w)
                             break
-                        elif self.niveau == 2:
-                            if data_dict[x]["score"][indice] < score:
-                                data_dict[x]["score"][indice] = score
-                                data_dict[x]["historique"][indice] = self.niveau
-                                with open('sauvegarde.json','w') as json_data_w:
-                                    json.dump(data_dict,json_data_w)
-                            break
-                        elif self.niveau == 3:
-                            if data_dict[x]["score"][indice] < score:
-                                data_dict[x]["score"][indice] = score
-                                data_dict[x]["historique"][indice] = self.niveau
-                                with open('sauvegarde.json','w') as json_data_w:
-                                    json.dump(data_dict,json_data_w)
-                            break
+
         except FileNotFoundError:
             print("Fichier sauvegarde.json n'existe pas ")
 
