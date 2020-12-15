@@ -1,5 +1,6 @@
 # RushHour-Python
 
-##Créateur du jeux
-Perdaens Martin
+## Créateur du jeux
+<br>
+Perdaens Martin<br>
 Tongres Cyril
