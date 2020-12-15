@@ -9,11 +9,12 @@ from pickle import dump, load
 import threading
 import time
 from vehicule import *
+from user import *
 
 
 score = 2000
 #Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
-class ApplicationBase(vehicule):
+class ApplicationBase(vehicule,user):
     #Def qui permet de crée les boutons communs à tous les niveaux
     def __init__(self):
         self.score = score
@@ -36,18 +37,10 @@ class ApplicationBase(vehicule):
     
     #Def permettant d'ajuster l'enlevement des points par niveau et par secondes
     def ScoreJoueur(self):        
-        if self.niveau == 1:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 5
-            self.fenetre_P.after(1000,self.ScoreJoueur)
-        if self.niveau == 2:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 10
-            self.fenetre_P.after(1000,self.ScoreJoueur)
-        if self.niveau == 3:
-            if self.score > 0 and self.varVictoire == 0:
-                self.score -= 20
-            self.fenetre_P.after(1000,self.ScoreJoueur)
+        if self.score > 0 and self.varVictoire == 0:
+            self.score -= 20
+            self.fenetre_P.after(1000*self.niveau,self.ScoreJoueur)
+
              
     #Def qui permet de revenir à la page profil 
     def RetourPrincipale(self):
