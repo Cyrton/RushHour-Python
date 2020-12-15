@@ -39,11 +39,18 @@ class TestProjet(unittest.TestCase):
         self.assertIsNot(type(data_car["niveau1"]["0"]["v1"]["orientation"]), int)
 
     def test_Jouer (self):
-        self.assertEqual(VerifPseudo(None, None, None, "", None), None)
+        self.assertEqual(VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer, "cyril",Fenetre_Principale), False)
     
     def test_Profil (self):
-        self.assertEqual(Fenetre_profil(None, None, None, None, None, 0, None), 0)        
+        #self.assertEqual(Fenetre_profil(None, None, None, None, None, 0, None), 0)        
+        pass
 
+    def test_classementValue(self):
+        self.assertGreater(data_dict["martin"]["score"][0], data_dict["cyril"]["score"][0])
+        self.assertLess(data_dict["cyril"]["score"][0], data_dict["martin"]["score"][0])
+    
+    def test_supprimer(self):
+        self.assertEqual(supprimer_sauvegarde(li_sauvegarde, "cyril", data_dict), None)
 
 if __name__ == '__main__':
     unittest.main()
