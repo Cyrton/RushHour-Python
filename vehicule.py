@@ -18,6 +18,10 @@ class vehicule(user):
         self.y = y
 
     def Niveau(self,unite,x,y):
+        """
+        Pre: Avoir un fichier vehicule.json existant avec les données requises dans celui-ci.
+        Post: Va renvoier la position des véhicules en fonction de leurs déplacement pour les empècher de sortir du carré.
+        """
         try:
             with open('vehicule.json') as json_data_r:
                 data_dict = json.load(json_data_r)
@@ -60,11 +64,19 @@ class vehicule(user):
                                 
     # def permettant de selectionner et bouger les rectangles objets
     def mouseDown(self, event):
+        """
+        Pre:
+        Post:
+        """
         self.x1, self.y1 = event.x, event.y
         self.selObject = self.canvas.find_closest(self.x1, self.y1) 
     
     #Fonction qui nous permet de bloquer les rectangles objets entre eux mais aussi de "gagner" lorsque le rectangle rouge atteint une certaine coordonée      
     def FreeToMove(self,X=0,Y=0):
+        """
+        Pre: Avoir sorti la voiture rouge à la position x0 y0
+        Post: Va renvoier une situation de victoire si la voiture rouge est sortie du carré en se trouvant à la position x0 y0
+        """
         coord = self.canvas.coords(self.selObject[0])
         cond = True
         if self.varVictoire == 0:
@@ -87,6 +99,10 @@ class vehicule(user):
         
     # def permettant de selectionner et bouger les rectangles objets
     def mouseMove(self, event):
+        """
+        Pre: avoir cliqué avec sa souris sur une des voitures
+        Post: La fonction va permettre de déplacer les voitures via la souris et envoyer les données de déplacement de celle-ci
+        """
         x2, y2 = event.x, event.y
         dx, dy = x2 -self.x1, y2 -self.y1
         if self.selObject and self.varVictoire == 0:
