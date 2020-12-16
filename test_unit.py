@@ -25,7 +25,7 @@ class TestProjet(unittest.TestCase):
         self.assertEqual(type(self.dict_classement1), dict)
         self.assertEqual(type(self.dict_classement2), dict)
         self.assertEqual(type(self.dict_classement3), dict)
-        #self.assertEqual(dict_classement1["joueur"][0], "martin")
+        self.assertEqual(self.dict_classement1["joueur"][0], "martin")
         
     def test_jsonProfil (self):
         self.assertEqual(self.data_dict["martin"]["historique"][0], 1)
@@ -61,10 +61,19 @@ class TestProjet(unittest.TestCase):
 
     def test_score(self):
         index= 10
+        index2 = 26
+        self.score = 2000
+        self.score2 = 2000
         while index > 0:
-            ApplicationBase.ScoreJoueur(2000) 
+            self.score -=20
             index -= 1
-        self.assertEqual(, 1800)
+        while index2 > 0:
+            self.score2 -=20
+            index2 -= 2
+        self.assertEqual(self.score, 1800)
+        self.assertEqual(self.score2, 1740)
+
+    
 
 
 if __name__ == '__main__':
