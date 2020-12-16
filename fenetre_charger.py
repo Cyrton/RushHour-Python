@@ -37,9 +37,9 @@ def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
             dict_classement3["niveau 3"][indice]=data_dict[e]["score"][2]
             indice += 1
 
-        #print(dict_classement1)
-        #print(dict_classement2)
-        #print(dict_classement3)
+        print(dict_classement1)
+        print(dict_classement2)
+        print(dict_classement3)
 
         data1 = pd.DataFrame.from_dict(dict_classement1)
         data2 = pd.DataFrame.from_dict(dict_classement2)
