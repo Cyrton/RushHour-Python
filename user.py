@@ -30,7 +30,7 @@ class user:
         try:
             self.historique = li_sauvegarde
             for y in self.historique:
-                del self.historique[index_delete]
+                self.historique[index_delete] = 0
                 break
             data_dict[pseudo]["historique"] = self.historique
 
