@@ -10,6 +10,10 @@ import json
 
 #Fonction de la fenêtre Charger
 def Fenetre_Charger(fenetre_P, Fenetre_Principale,canvas_general):
+    """
+    Pre: Le fichier sauvegarde.json doit exister et être dans la fenêtre classement.
+    Post: La fonction va afficher le classement des différents joueurs en fonction de leur score par niveau.
+    """
     try:
         canvas_general.destroy()
         print("Fenetre_Classement")

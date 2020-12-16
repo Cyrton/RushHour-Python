@@ -12,6 +12,11 @@ import json
 #Def qui permet de dire si un pseudo est deja enregisté
 
 def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
+    """
+    Pre : le pseudo doit être un string et qu'il soit non vide
+    Post : Si le pseudo existe déjà on va chercher les données lié à ce pseudo dans le json,
+    sinon on va créer le pseudo dans le json avec la structure historique et score.
+    """
     try:
         if pseudo == "":
             print("Vous n'avez pas rentrer de pseudo")
