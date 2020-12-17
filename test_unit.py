@@ -3,6 +3,8 @@ from fenetre_jouer import *
 from fenetre_charger import *
 from fenetre_profil import *
 from niveau_base import *
+from vehicule import *
+from fenetre_jouer import *
 
 with open('sauvegarde.json') as json_data_r:
         data_dict = json.load(json_data_r)
@@ -16,7 +18,8 @@ class TestProjet(unittest.TestCase):
         super().__init__(methodName)
         self.data_dict= {"martin": {"historique": [1, 2, 3], "score": [1960, 1740, 1180]}, 
         "cyril": {"historique": [0, 0, 0], "score": [0, 0, 0]}, 
-        "tata": {"historique": [1, 0, 0], "score": [1960, 0, 0]}}
+        "tata": {"historique": [1, 0, 0], "score": [1960, 0, 0]},
+        "":{}}
         self.dict_classement1={'joueur': {0: 'martin', 1: 'cyril', 2: 'tata'}, 'niveau 1': {0: 1960, 1: 0, 2: 1960}}
         self.dict_classement2={'joueur': {0: 'martin', 1: 'cyril', 2: 'tata'}, 'niveau 2': {0: 1740, 1: 0, 2: 0}}
         self.dict_classement3={'joueur': {0: 'martin', 1: 'cyril', 2: 'tata'}, 'niveau 3': {0: 1180, 1: 0, 2: 0}}
@@ -59,12 +62,20 @@ class TestProjet(unittest.TestCase):
     def test_supprimer(self):
         pass
 
-    def test_score(self):
+    """def test_score(self):
         index= 10
         while index > 0:
             ApplicationBase.ScoreJoueur(2000) 
             index -= 1
-        self.assertEqual(, 1800)
+        self.assertEqual(, 1800)"""
+    
+    def test_victoire(self):
+        #self.assertEqual(vehicule.FreeToMove(self,0,0),0)  
+        pass
+
+    def test_verifPseudo(self): 
+        self.assertEqual(self.data_dict[""], "")
+    
 
 
 if __name__ == '__main__':
