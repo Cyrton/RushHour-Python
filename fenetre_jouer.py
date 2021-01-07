@@ -11,7 +11,7 @@ import json
 
 #Def qui permet de dire si un pseudo est deja enregisté
 
-def VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
+def verif_pseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo,Fenetre_Principale):
     try:
         if pseudo == "":
             print("Vous n'avez pas rentrer de pseudo")
@@ -78,7 +78,7 @@ def Fenetre_Jouer(fenetre_P,Fenetre_Principale,canvas_general,canvas_profil,fene
     
     entree = Entry(canvas_jouer, textvariable=pseudo, width=20,bg='white')
     entree.pack(padx=0,pady=5)
-    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: VerifPseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get(),Fenetre_Principale),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
+    boutonGO = Button(canvas_jouer, text="Profil", command= lambda: verif_pseudo(canvas_jouer,fenetre_P,Fenetre_Jouer,pseudo.get(),Fenetre_Principale),fg ='black',bg = '#66EC62',activebackground='light green',font="Arial 11 bold",width =35, height = 1)
     boutonGO.pack(padx=0,pady=15)
     
     label4 = Label(canvas_jouer,text="     Le jeu a été réalisé par :\n\

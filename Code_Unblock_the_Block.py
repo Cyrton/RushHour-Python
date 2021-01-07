@@ -39,6 +39,7 @@ def Fenetre_Principale(fenetre_P,canvas_jouer, canvas_classement,fenetre_destroy
     boutonC.pack(side = BOTTOM,padx=0, pady=0)
     boutonJ.pack(side = BOTTOM,padx=0, pady=20)
 
+
     fenetre_P.mainloop()
 #----------------------------------------------------------------------------------------------
 
@@ -48,7 +49,7 @@ fenetre_P.minsize(width=900, height=800)
 fenetre_P.maxsize(width=900, height=800)
 fenetre_P['bg']='light yellow'
 fenetre_P.title('UNBLOCK THE BLOCK')
-nombreSauvegarde = 0
+fenetre_P.iconbitmap("image_grille_page_de_garde.ico")
 Fenetre_Principale(fenetre_P,NONE,NONE,NONE)
 #----------------------------------------------------------------------------------------------
 
