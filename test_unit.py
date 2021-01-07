@@ -62,8 +62,8 @@ class TestProjet(unittest.TestCase):
     def test_supprimer(self):
         pass
 
-    """def test_score(self):
-        index= 10
+    def test_score(self):
+        """index= 10
         while index > 0:
             ApplicationBase.ScoreJoueur(2000) 
             index -= 1
@@ -74,7 +74,8 @@ class TestProjet(unittest.TestCase):
         pass
 
     def test_verifPseudo(self): 
-        self.assertEqual(self.data_dict[""], "")
+        pseudo1 = ""
+        self.assertRaises(AttributeError(VerifPseudo(None, None, 1, pseudo1, None)))
     
 
 
