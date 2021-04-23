@@ -12,7 +12,7 @@ import threading
 import time
 
 
-#Class comprenant toutes les fonctiosn necessaire au bon déroulement du jeu
+#Class comprenant toutes les fonctions necessaires au bon déroulement du jeu
 class ApplicationNv1(ApplicationBase):
     def __init__(self,unite, x, y,score,fenetre_P,canvas_profil,pseudo,Fenetre_profil,Fenetre_Principale,Fenetre_Jouer):
 
